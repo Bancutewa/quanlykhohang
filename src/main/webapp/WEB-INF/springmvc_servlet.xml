@@ -30,7 +30,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/inventory_management?useSSL=false&amp;verifyServerCertificate=false"/>
         <property name="username" value="root"/>
-        <property name="password" value="bancutewa10304"/>
+        <property name="password" value="512004"/>
     </bean>
 
     <!-- Step 2: Setup Hibernate session factory -->
