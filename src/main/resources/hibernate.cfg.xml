@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database setting -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/inventory_management?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">bancutewa10304</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">4</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache -->
+        <!--        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>-->
+
+        <!-- Show all executed SQL to console -->
+        <property name="show_sql">true</property>
+
+        <!-- Các Model -->
+
+        <mapping class="inventory.model.Auth"/>
+        <mapping class="inventory.model.Category"/>
+        <mapping class="inventory.model.History"/>
+        <mapping class="inventory.model.Invoice"/>
+        <mapping class="inventory.model.Menu"/>
+        <mapping class="inventory.model.ProductInfo"/>
+        <mapping class="inventory.model.ProductInStock"/>
+        <mapping class="inventory.model.Role"/>
+        <mapping class="inventory.model.User"/>
+        <mapping class="inventory.model.UserRole"/>
+    </session-factory>
+</hibernate-configuration>
