@@ -17,17 +17,4 @@ public class UserController {
     }
     @Autowired
     private UserService userService;
-
-    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public String addUser() {
-        User newUser = new User();
-        newUser.setId(1);
-        newUser.setUserName("john_doe");
-        newUser.setPassword("password123");
-        newUser.setName("John Doe");
-        newUser.setEmail("johndoe@example.com");
-        newUser.setActiveFlag(1);
-        userService.addUser(newUser);
-        return "userAdded";
-    }
 }

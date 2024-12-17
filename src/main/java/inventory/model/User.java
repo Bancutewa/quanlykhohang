@@ -104,5 +104,11 @@ public class User {
     public void setUpdateDate(Instant updateDate) {
         this.updateDate = updateDate;
     }
-
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

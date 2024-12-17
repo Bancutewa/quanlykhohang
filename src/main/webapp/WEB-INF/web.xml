@@ -20,7 +20,10 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-
+  <!-- Enable Session Management -->
+  <session-config>
+    <session-timeout>3000</session-timeout> <!-- Thời gian timeout cho session -->
+  </session-config>
 
 </web-app>
 

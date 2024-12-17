@@ -17,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Inventory Management | </title>
 
     <!-- Bootstrap -->
 
@@ -51,7 +51,7 @@
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>D khai</h2>
+                        <h2>${user_info.userName}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->

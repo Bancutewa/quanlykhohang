@@ -60,7 +60,12 @@
       <version>2.3.3</version>
       <scope>provided</scope>
     </dependency>
-
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
     <!--    jstl-->
     <dependency>
       <groupId>jstl</groupId>
@@ -68,10 +73,18 @@
       <version>${jstl.version}</version>
     </dependency>
 
+    <!--    tiles-->
     <dependency>
       <groupId>org.apache.tiles</groupId>
       <artifactId>tiles-extras</artifactId>
       <version>3.0.8</version>
+    </dependency>
+
+    <!--    log4j-->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
     </dependency>
   </dependencies>
   <build>

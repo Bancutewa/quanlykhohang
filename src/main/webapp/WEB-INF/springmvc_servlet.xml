@@ -31,7 +31,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/inventory_management?useSSL=false&amp;verifyServerCertificate=false"/>
         <property name="username" value="root"/>
-        <property name="password" value="@ngulon123"/>
+        <property name="password" value="bancutewa10304"/>
     </bean>
 
     <!-- Step 2: Setup Hibernate session factory -->
@@ -68,5 +68,8 @@
                 <value>/WEB-INF/tiles.xml</value>
             </list>
         </property>
+    </bean>
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/message/message"/>
     </bean>
 </beans>
