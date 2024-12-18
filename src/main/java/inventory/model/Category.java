@@ -2,11 +2,14 @@ package inventory.model;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
@@ -28,6 +31,9 @@ public class Category {
 
     @Column(name = "UPDATE_DATE", nullable = false)
     private Instant updateDate;
+
+    @OneToMany(mappedBy = "cate")
+    private Set<inventory.model.ProductInfo> productInfos = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -83,6 +89,14 @@ public class Category {
 
     public void setUpdateDate(Instant updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Set<inventory.model.ProductInfo> getProductInfos() {
+        return productInfos;
+    }
+
+    public void setProductInfos(Set<inventory.model.ProductInfo> productInfos) {
+        this.productInfos = productInfos;
     }
 
 }

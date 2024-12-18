@@ -1,3 +1,4 @@
+<%--@elvariable id="userInfo" type="java.net.PasswordAuthentication"--%>
 <%--
   Created by IntelliJ IDEA.
   User: LENOVO
@@ -5,8 +6,9 @@
   Time: 20:37
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +53,7 @@
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>${user_info.userName}</h2>
+                        <h2>${userInfo.userName}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->

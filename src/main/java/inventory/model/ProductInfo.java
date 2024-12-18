@@ -2,11 +2,14 @@ package inventory.model;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "product_info")
 public class ProductInfo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
@@ -35,6 +38,15 @@ public class ProductInfo {
 
     @Column(name = "UPDATE_DATE", nullable = false)
     private Instant updateDate;
+
+    @OneToMany(mappedBy = "product")
+    private Set<History> histories = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "product")
+    private Set<Invoice> invoices = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductInStock> productInStocks = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -106,6 +118,30 @@ public class ProductInfo {
 
     public void setUpdateDate(Instant updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Set<History> getHistories() {
+        return histories;
+    }
+
+    public void setHistories(Set<History> histories) {
+        this.histories = histories;
+    }
+
+    public Set<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(Set<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+
+    public Set<ProductInStock> getProductInStocks() {
+        return productInStocks;
+    }
+
+    public void setProductInStocks(Set<ProductInStock> productInStocks) {
+        this.productInStocks = productInStocks;
     }
 
 }

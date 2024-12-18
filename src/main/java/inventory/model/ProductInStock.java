@@ -7,6 +7,7 @@ import java.time.Instant;
 @Table(name = "product_in_stock")
 public class ProductInStock {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 

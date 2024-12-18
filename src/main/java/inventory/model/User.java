@@ -1,15 +1,15 @@
 package inventory.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
@@ -34,12 +34,8 @@ public class User {
     @Column(name = "UPDATE_DATE", nullable = false)
     private Instant updateDate;
 
-    public User() {
-        // Gán giá trị mặc định cho activeFlag, createDate và updateDate
-        this.activeFlag = 1; // Giá trị mặc định (1: active)
-        this.createDate = Instant.now(); // Gán ngày giờ hiện tại
-        this.updateDate = Instant.now(); // Gán ngày giờ hiện tại
-    }
+    @OneToMany(mappedBy = "user")
+    private Set<UserRole> userRoles = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -104,11 +100,13 @@ public class User {
     public void setUpdateDate(Instant updateDate) {
         this.updateDate = updateDate;
     }
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
 }

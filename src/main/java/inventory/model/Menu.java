@@ -2,17 +2,21 @@ package inventory.model;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "menu")
 public class Menu {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PARENT_ID")
-    private Menu parent;
+    @Column(name = "PARENT_ID")
+    private int parentId; // Giữ parentId là int
 
     @Column(name = "URL", nullable = false, length = 100)
     private String url;
@@ -32,6 +36,15 @@ public class Menu {
     @Column(name = "UPDATE_DATE", nullable = false)
     private Instant updateDate;
 
+    @OneToMany(mappedBy = "menu") // Quan hệ với Auth (nếu có)
+    private Set<Auth> auths = new LinkedHashSet<>();
+
+    @Transient
+    private List<Menu> child;
+
+    @Transient
+    private String idMenu;
+
     public Integer getId() {
         return id;
     }
@@ -40,12 +53,12 @@ public class Menu {
         this.id = id;
     }
 
-    public Menu getParent() {
-        return parent;
+    public int getParentId() {
+        return parentId;
     }
 
-    public void setParent(Menu parent) {
-        this.parent = parent;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
     public String getUrl() {
@@ -96,4 +109,27 @@ public class Menu {
         this.updateDate = updateDate;
     }
 
+    public Set<Auth> getAuths() {
+        return auths;
+    }
+
+    public void setAuths(Set<Auth> auths) {
+        this.auths = auths;
+    }
+
+    public List<Menu> getChild() {
+        return child;
+    }
+
+    public void setChild(List<Menu> child) {
+        this.child = child;
+    }
+
+    public String getIdMenu() {
+        return idMenu;
+    }
+
+    public void setIdMenu(String idMenu) {
+        this.idMenu = idMenu;
+    }
 }

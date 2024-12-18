@@ -1,15 +1,15 @@
 package inventory.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
 public class Role {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
@@ -27,6 +27,12 @@ public class Role {
 
     @Column(name = "UPDATE_DATE", nullable = false)
     private Instant updateDate;
+
+    @OneToMany(mappedBy = "role")
+    private Set<Auth> auths = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "role")
+    private Set<inventory.model.UserRole> userRoles = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -74,6 +80,22 @@ public class Role {
 
     public void setUpdateDate(Instant updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Set<Auth> getAuths() {
+        return auths;
+    }
+
+    public void setAuths(Set<Auth> auths) {
+        this.auths = auths;
+    }
+
+    public Set<inventory.model.UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<inventory.model.UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
 }
