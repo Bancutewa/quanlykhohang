@@ -99,15 +99,4 @@ public class Category {
         this.productInfos = productInfos;
     }
 
-    @Override
-    public String toString() {
-        return "Category [id=" + id +
-                ", name=" + name +
-                ", code=" + code +
-                ", description=" + description +
-                ", activeFlag=" + activeFlag +
-                ", createDate=" + createDate +
-                ", updateDate=" + updateDate + "]";
-    }
-
 }

@@ -105,18 +105,8 @@ public class LoginController {
         // Chuyển hướng đến trang chính sau khi đăng nhập thành công
         return "redirect:/index";
     }
-    @GetMapping("/access-denied")
-    public String accessDenied() {
-       return "access-denied";
-    }
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-    session.removeAttribute(Constant.MENU_SESSION);
-    session.removeAttribute(Constant.USER_INFO);
-    return "redirect:/login";
-    }
 
-    private void sortMenu(List<Menu> menus) {
+    public void sortMenu(List<Menu> menus) {
         menus.sort(new Comparator<Menu>() {
             @Override
             public int compare(Menu o1, Menu o2) {

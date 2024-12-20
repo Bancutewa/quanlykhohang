@@ -33,8 +33,6 @@
 
     <!-- Custom Theme Style -->
     <link href="<c:url value="/resources/build/css/custom.min.css"/>" rel="stylesheet">
-    <!-- jQuery -->
-    <script src="<c:url value="/resources/vendors/jquery/dist/jquery.min.js"/>"></script>
 </head>
 
 <body class="nav-md footer_fixed">
@@ -76,7 +74,7 @@
                     <a data-toggle="tooltip" data-placement="top" title="Lock">
                         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                     </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="<c:url value="/logout"/>">
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -98,6 +96,8 @@
     </div>
 </div>
 
+<!-- jQuery -->
+<script src="<c:url value="/resources/vendors/jquery/dist/jquery.min.js"/>"></script>
 <!-- Bootstrap -->
 <script src="<c:url value="/resources/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"/>"></script>
 <!-- FastClick -->
