@@ -1,4 +1,4 @@
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bancutewa10304';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '512004';
 FLUSH PRIVILEGES;
 CREATE DATABASE inventory_management;
 USE inventory_management;

@@ -1,5 +1,7 @@
 package inventory.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.LinkedHashSet;
@@ -142,6 +144,19 @@ public class ProductInfo {
 
     public void setProductInStocks(Set<ProductInStock> productInStocks) {
         this.productInStocks = productInStocks;
+    }
+
+//    Không ánh xạ vô database
+    @Transient // Không ánh xạ vào cơ sở dữ liệu
+    private MultipartFile multipartFile;
+
+    // Getters và setters cho MultipartFile
+    public MultipartFile getMultipartFile() {
+        return multipartFile;
+    }
+
+    public void setMultipartFile(MultipartFile multipartFile) {
+        this.multipartFile = multipartFile;
     }
 
 }
