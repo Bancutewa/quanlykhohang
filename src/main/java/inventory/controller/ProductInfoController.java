@@ -5,6 +5,7 @@ import inventory.model.ProductInfo;
 import inventory.service.ProductService;
 import inventory.util.Constant;
 import inventory.validate.CategoryValidator;
+import inventory.validate.ProductInfoValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProductInfoController {
@@ -38,8 +41,11 @@ public class ProductInfoController {
             binder.setValidator(productInfoValidator);
         }
     }
-
-    @RequestMapping(value = "/productInfo/list")
+    @RequestMapping(value= {"/product-info/list","/productInfo/list/"})
+    public String redirect() {
+        return "redirect:/product-info/list";
+    }
+    @RequestMapping(value = "/product-info/list")
     public String showproductInfoList(Model model, HttpSession session, @ModelAttribute("searchForm") ProductInfo productInfo) {
         List<ProductInfo> categories = productService.getAllProductInfo(productInfo);
         if(session.getAttribute(Constant.MSG_SUCCESS) != null) {
@@ -58,6 +64,12 @@ public class ProductInfoController {
     public String add(Model model) {
         model.addAttribute("titlePage","Add  ProductInfo");
         model.addAttribute("modelForm", new ProductInfo());
+        List<Category> categories = productService.getAllCategory(null, null);
+        Map<String, String> mapCategory = new HashMap<>();
+        for (Category category : categories) {
+            mapCategory.put(String.valueOf(category.getId()), category.getName());
+        }
+        model.addAttribute("mapCategory", mapCategory);
         model.addAttribute("viewOnly", false);
         return "productInfo-action";
     }
@@ -66,12 +78,18 @@ public class ProductInfoController {
         log.info("Edit productInfo with id: " + id);
         ProductInfo productInfo = productService.findByIdProductInfo(id);
         if(productInfo != null) {
+            List<Category> categories = productService.getAllCategory(null, null);
+            Map<String, String> mapCategory = new HashMap<>();
+            for (Category category : categories) {
+                mapCategory.put(String.valueOf(category.getId()), category.getName());
+            }
+            model.addAttribute("mapCategory", mapCategory);
             model.addAttribute("titlePage","Edit ProductInfo");
             model.addAttribute("modelForm", productInfo);
             model.addAttribute("viewOnly", false);
             return "productInfo-action";
         }
-        return "redirect:/productInfo/list";
+        return "redirect:/producti-info/list";
     }
 
     @GetMapping("/productInfo/view/{id}")
@@ -84,13 +102,23 @@ public class ProductInfoController {
             model.addAttribute("viewOnly", true);
             return "productInfo-action";
         }
-        return "redirect:/productInfo/list";
+        return "redirect:/product-info/list";
     }
 
-    @PostMapping("/productInfo/save")
+    @PostMapping("/product-info/save")
     public String save(Model model, @ModelAttribute("modelForm") @Validated ProductInfo productInfo, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
-            model.addAttribute("titlePage", productInfo.getId() != null ? "Edit ProductInfo" : "Add ProductInfo");
+            if (productInfo.getId() != null) {
+                model.addAttribute("titlePage","Edit  ProductInfo");
+            }else {
+                model.addAttribute("titlePage","Add  ProductInfo");
+            }
+            List<Category> categories = productService.getAllCategory(null, null);
+            Map<String, String> mapCategory = new HashMap<>();
+            for (Category category : categories) {
+                mapCategory.put(String.valueOf(category.getId()), category.getName());
+            }
+            model.addAttribute("mapCategory", mapCategory);
             model.addAttribute("modelForm", productInfo);
             model.addAttribute("viewOnly", false);
             return "productInfo-action";  // Trả lại trang nhập liệu với lỗi
