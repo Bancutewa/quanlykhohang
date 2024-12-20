@@ -40,7 +40,6 @@ public class FilterSystem implements HandlerInterceptor {
         for (Object obj : auths) {
             Auth auth = (Auth) obj;
             if (url.contains(auth.getMenu().getUrl())) {
-                System.out.println( "Permission" + auth.getPermission());
                 return auth.getPermission() == 1;
             }
         }
