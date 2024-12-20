@@ -2,6 +2,7 @@ package inventory.controller;
 
 import inventory.model.Category;
 import inventory.service.ProductService;
+import inventory.util.Constant;
 import inventory.validate.CategoryValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -13,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,9 +38,17 @@ public class CategoryController {
         }
     }
 
-    @GetMapping("/category/list")
-    public String showCategoryList(Model model) {
-        List<Category> categories = productService.getAllCategory();
+    @RequestMapping(value = "/category/list")
+    public String showCategoryList(Model model, HttpSession session, @ModelAttribute("searchForm") Category category) {
+        List<Category> categories = productService.getAllCategory(category);
+        if(session.getAttribute(Constant.MSG_SUCCESS) != null) {
+            model.addAttribute(Constant.MSG_SUCCESS, session.getAttribute(Constant.MSG_SUCCESS));
+            session.removeAttribute(Constant.MSG_SUCCESS);
+        }
+        if (session.getAttribute(Constant.MSG_ERROR) != null) {
+            model.addAttribute(Constant.MSG_ERROR, session.getAttribute(Constant.MSG_ERROR));
+            session.removeAttribute(Constant.MSG_ERROR);
+        }
         model.addAttribute("categories", categories);
         return "category-list";
     }
@@ -77,7 +87,7 @@ public class CategoryController {
     }
 
     @PostMapping("/category/save")
-    public String save(Model model, @ModelAttribute("modelForm") @Validated Category category, BindingResult result) {
+    public String save(Model model, @ModelAttribute("modelForm") @Validated Category category, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
             model.addAttribute("titlePage", category.getId() != null ? "Edit Category" : "Add Category");
             model.addAttribute("modelForm", category);
@@ -86,21 +96,40 @@ public class CategoryController {
         }
 
         if (category.getId() != null && category.getId() != 0) {
-            productService.updateCategory(category);
-            model.addAttribute("message", "Update category successfully");
+            try {
+                productService.updateCategory(category);
+                session.setAttribute(Constant.MSG_SUCCESS,"Updated Successfully");
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error(e.getMessage());
+                session.setAttribute(Constant.MSG_ERROR,"Update Failed");
+
+            }
         } else {
-            productService.saveCategory(category);
-            model.addAttribute("message", "Insert category successfully");
+            try {
+                productService.saveCategory(category);
+                session.setAttribute(Constant.MSG_SUCCESS,"Inserted Successfully");
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error(e.getMessage());
+                session.setAttribute(Constant.MSG_ERROR,"Insert Failed");
+            }
         }
 
-        return showCategoryList(model);  // Quay lại danh sách sau khi lưu
+        return "redirect:/category/list";
     }
     @GetMapping("/category/delete/{id}")
-    public String delete(Model model, @PathVariable("id") int id) {
+    public String delete(Model model, @PathVariable("id") int id, HttpSession session) {
         log.info("Delete category with id: " + id);
         Category category = productService.findByIdCategory(id);
         if(category != null) {
-            productService.deleteCategory(category);
+            try {
+                productService.deleteCategory(category);
+                session.setAttribute(Constant.MSG_SUCCESS,"Deleted Successfully");
+            } catch (Exception e) {
+                e.printStackTrace();
+                session.setAttribute(Constant.MSG_ERROR,"Delete Failed");
+            }
         }
         return "redirect:/category/list";
     }
