@@ -1,3 +1,7 @@
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="">
@@ -5,28 +9,23 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Category list</h2>
-
                     <div class="clearfix"></div>
                 </div>
-
+                <div class="container">
+                    <a href="<c:url value="/category/add"/>" class="btn btn-app"><i class="fa fa-plus"></i>Add</a>
+                </div>
                 <div class="x_content">
-
-                    <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
 
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
                             <thead>
                             <tr class="headings">
-                                <th>
-                                    <input type="checkbox" id="check-all" class="flat">
-                                </th>
-                                <th class="column-title">Invoice </th>
-                                <th class="column-title">Invoice Date </th>
-                                <th class="column-title">Order </th>
-                                <th class="column-title">Bill to Name </th>
-                                <th class="column-title">Status </th>
-                                <th class="column-title">Amount </th>
-                                <th class="column-title no-link last"><span class="nobr">Action</span>
+                                <th class="column-title">#  </th>
+                                <th class="column-title">Id </th>
+                                <th class="column-title">Code </th>
+                                <th class="column-title">Name </th>
+                                <th class="column-title">Description </th>
+                                <th class="column-title no-link last text-center" colspan="3"><span class="nobr">Action</span>
                                 </th>
                                 <th class="bulk-actions" colspan="7">
                                     <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -35,140 +34,25 @@
                             </thead>
 
                             <tbody>
-                            <tr class="even pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000040</td>
-                                <td class=" ">May 23, 2014 11:47:56 PM </td>
-                                <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                <td class=" ">John Blank L</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$7.45</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="odd pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000039</td>
-                                <td class=" ">May 23, 2014 11:30:12 PM</td>
-                                <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                                </td>
-                                <td class=" ">John Blank L</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$741.20</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="even pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000038</td>
-                                <td class=" ">May 24, 2014 10:55:33 PM</td>
-                                <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                                </td>
-                                <td class=" ">Mike Smith</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$432.26</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="odd pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000037</td>
-                                <td class=" ">May 24, 2014 10:52:44 PM</td>
-                                <td class=" ">121000204</td>
-                                <td class=" ">Mike Smith</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$333.21</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="even pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000040</td>
-                                <td class=" ">May 24, 2014 11:47:56 PM </td>
-                                <td class=" ">121000210</td>
-                                <td class=" ">John Blank L</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$7.45</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="odd pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000039</td>
-                                <td class=" ">May 26, 2014 11:30:12 PM</td>
-                                <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                                </td>
-                                <td class=" ">John Blank L</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$741.20</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="even pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000038</td>
-                                <td class=" ">May 26, 2014 10:55:33 PM</td>
-                                <td class=" ">121000203</td>
-                                <td class=" ">Mike Smith</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$432.26</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="odd pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000037</td>
-                                <td class=" ">May 26, 2014 10:52:44 PM</td>
-                                <td class=" ">121000204</td>
-                                <td class=" ">Mike Smith</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$333.21</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-
-                            <tr class="even pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000040</td>
-                                <td class=" ">May 27, 2014 11:47:56 PM </td>
-                                <td class=" ">121000210</td>
-                                <td class=" ">John Blank L</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$7.45</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr class="odd pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">121000039</td>
-                                <td class=" ">May 28, 2014 11:30:12 PM</td>
-                                <td class=" ">121000208</td>
-                                <td class=" ">John Blank L</td>
-                                <td class=" ">Paid</td>
-                                <td class="a-right a-right ">$741.20</td>
-                                <td class=" last"><a href="#">View</a>
-                                </td>
-                            </tr>
+                            <c:forEach items="${categories}" var="category" varStatus="loop">
+                                <c:choose>
+                                    <c:when test="${loop.index%2==0}">
+                                        <tr class="even pointer">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <tr class="odd pointer">
+                                    </c:otherwise>
+                                </c:choose>
+                                <td class=" ">${loop.index+1}</td>
+                                <td class=" ">${category.id }</td>
+                                <td class=" ">${category.code } </td>
+                                <td class=" ">${category.name }</td>
+                                <td class=" ">${category.description}</td>
+                                <td class="text-center"><a href="<c:url value="/category/view/${category.id}"/> " class="btn btn-round btn-default">View</a></td>
+                                <td class="text-center"><a href="<c:url value="/category/edit/${category.id}"/> " class="btn btn-round btn-primary">Edit</a></td>
+                                <td class="text-center"><a href="javascript:void(0);" onclick="confirmDelete(${category.id})" class="btn btn-round btn-danger">Delete</a></td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -177,7 +61,13 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <!-- /page content -->
+<script type="text/javascript">
+    function confirmDelete(id) {
+        if(confirm('Do you want delete this record ')) {
+            window.location.href = "<c:url value="/category/delete/"/>" + id
+        }
+    }
+</script>

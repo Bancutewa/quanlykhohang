@@ -77,23 +77,24 @@ public class CategoryController {
     }
 
     @PostMapping("/category/save")
-    public String save(Model model, @ModelAttribute("modelForm") @Validated Category category, BindingResult  result) {
+    public String save(Model model, @ModelAttribute("modelForm") @Validated Category category, BindingResult result) {
         if (result.hasErrors()) {
             model.addAttribute("titlePage", category.getId() != null ? "Edit Category" : "Add Category");
             model.addAttribute("modelForm", category);
             model.addAttribute("viewOnly", false);
-            return "category-action";
+            return "category-action";  // Trả lại trang nhập liệu với lỗi
         }
+
         if (category.getId() != null && category.getId() != 0) {
             productService.updateCategory(category);
-            model.addAttribute("message","update category successfully");
-        }else {
+            model.addAttribute("message", "Update category successfully");
+        } else {
             productService.saveCategory(category);
-            model.addAttribute("message","Insert category successfully");
+            model.addAttribute("message", "Insert category successfully");
         }
-        return showCategoryList(model);
-    }
 
+        return showCategoryList(model);  // Quay lại danh sách sau khi lưu
+    }
     @GetMapping("/category/delete/{id}")
     public String delete(Model model, @PathVariable("id") int id) {
         log.info("Delete category with id: " + id);
