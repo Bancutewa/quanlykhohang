@@ -1,0 +1,93 @@
+[33mcommit 7be546934b9f58c605a8d6343dab63c535772a7a[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Sat Dec 21 05:15:56 2024 +0700
+
+    video 25
+
+[33mcommit 2bae3a4b45142e791db28d3aa060cc67e2f0158b[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Sat Dec 21 03:08:29 2024 +0700
+
+    video 24
+
+[33mcommit 224c090cb3723391a17c202092cdbf324dcb761c[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Sat Dec 21 00:39:22 2024 +0700
+
+    Revert "Revert "video 23""
+    
+    This reverts commit ff5b13caf751eaf6f4e5ff71bcf4acb9609871f2.
+
+[33mcommit ff5b13caf751eaf6f4e5ff71bcf4acb9609871f2[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Sat Dec 21 00:35:57 2024 +0700
+
+    Revert "video 23"
+    
+    This reverts commit fdf11721ef8c0b7be637fd04d024cf84b85a40ec.
+
+[33mcommit fdf11721ef8c0b7be637fd04d024cf84b85a40ec[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Fri Dec 20 22:47:28 2024 +0700
+
+    video 23
+
+[33mcommit 125e0df4ebfd178d7d3e0392f3a56124c46bd3ab[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Wed Dec 18 07:16:32 2024 +0700
+
+    Video 19: Menu động, sửa lại mối quan hệ của db
+
+[33mcommit b9751c58aba04546ca852dac15c36511659b2a03[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Wed Dec 18 00:57:48 2024 +0700
+
+    Video 16 17 18: Làm xong phần login, vẫn đang lỗi thằng attribute session
+
+[33mcommit dfb20db500b4abdf3d99b4f25b2458932d44e063[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Tue Dec 17 21:02:33 2024 +0700
+
+    Video15: Áp dụng template engine Apache tiles vào dự án
+
+[33mcommit 9d4a0286b1ad4ac26a0aef436b5bd68373f38d73[m
+Author: Your Name <quochiep1610@gmail.com>
+Date:   Tue Dec 17 09:02:13 2024 +0700
+
+    Ghi chi tiet lam nhung gi VISWO16: Add fiasdsa
+
+[33mcommit 7d01b9efe2853df562848a0158548fe38267a3f1[m
+Author: Khai <bkhaidinh@gmail.com>
+Date:   Tue Dec 17 04:19:21 2024 +0700
+
+    VID14: thêm các file build, css, vendors, vào file static; ở file views thêm file index.jsp mơi  xóa file index.jsp cũ
+
+[33mcommit 73eea5a359329f65790f6acd56118dc4ec9564de[m
+Author: Khai <bkhaidinh@gmail.com>
+Date:   Tue Dec 17 03:16:27 2024 +0700
+
+    vid14 demo
+
+[33mcommit 757fd48b6cd852d30a77efe304d5ae173cf33f33[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Mon Dec 16 20:48:42 2024 +0700
+
+    demo git cho khải
+
+[33mcommit 34c318240dc3a0dc1c3208e6aa05bd62e6c3ca5a[m
+Author: Khai <bkhaidinh@gmail.com>
+Date:   Mon Dec 16 20:46:03 2024 +0700
+
+    Demo_Video 15: thêm egin htmlasd
+
+[33mcommit 18251f5eeaadfbc6c3e6581dfef8aff550d87e14[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Mon Dec 16 18:10:59 2024 +0700
+
+    Video 13: Thêm các file model, cấu hình hibernate với MYSQL, thêm file script
+
+[33mcommit 3c7b6278f874de48770d2789d2e35624f1345cd5[m
+Author: bancutewa10304 <tranngoctien10304@gmail.com>
+Date:   Mon Dec 16 16:15:18 2024 +0700
+
+    first commit

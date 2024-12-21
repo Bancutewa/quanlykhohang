@@ -14,7 +14,7 @@
       <div class="x_panel">
         <div class="x_content">
           <br />
-          <form:form modelAttribute="modelForm" action="/category/save" method="post" class="form-horizontal">
+          <form:form modelAttribute="modelForm" action="/quanlykhohang/category/save" method="post" class="form-horizontal">
             <form:hidden path="id"/>
             <form:hidden path="createDate"/>
             <form:hidden path="activeFlag"/>

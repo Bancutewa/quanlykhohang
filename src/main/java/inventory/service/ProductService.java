@@ -52,8 +52,8 @@ public class ProductService {
                 mapParams.put("code", category.getCode());
             }
             if (category.getName()!=null && !StringUtils.isEmpty(category.getName())) {
-                queryStr.append(" and model.name=:name");
-                mapParams.put("name", category.getName());
+                queryStr.append(" and model.name like :name");
+                mapParams.put("name","%" + category.getName() +"%");
             }
 
         }
