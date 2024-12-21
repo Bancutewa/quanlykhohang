@@ -1,5 +1,6 @@
 package inventory.service;
 import inventory.dao.ProductInfoDAO;
+import inventory.model.Paging;
 import inventory.model.ProductInfo;
 import inventory.util.ConfigLoader;
 import org.apache.log4j.Logger;
@@ -46,7 +47,7 @@ public class ProductService {
         log.info("=====>Find Category by property: " + property + " value: " + value +" start");
         return categoryDAO.findByProperty(property, value);
     }
-    public List<Category>  getAllCategory(Category category) {
+    public List<Category>  getAllCategory(Category category, Paging paging) {
         log.info("=====>Find All Category");
         StringBuilder queryStr = new StringBuilder();
         Map<String, Object> mapParams  = new HashMap<>();
@@ -60,12 +61,12 @@ public class ProductService {
                 mapParams.put("code", category.getCode());
             }
             if (category.getName()!=null && !StringUtils.isEmpty(category.getName())) {
-                queryStr.append(" and model.name=:name");
-                mapParams.put("name", category.getName());
+                queryStr.append(" and model.name like :name");
+                mapParams.put("name", "%"+category.getName()+"%");
             }
 
         }
-        return categoryDAO.findAll(queryStr.toString(), mapParams);
+        return categoryDAO.findAll(queryStr.toString(), mapParams, paging);
     }
     public Category findByIdCategory(int id) {
         log.info("=====>Find Category by id: " + id);
@@ -84,7 +85,11 @@ public class ProductService {
     }
     public void updateProductInfo(ProductInfo productInfo) {
         log.info("=====>Update ProductInfo: " + productInfo.toString());
-        processUploadFile(productInfo.getMultipartFile());
+        try {
+            processUploadFile(productInfo.getMultipartFile());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         if (productInfo.getMultipartFile()!=null) {
             productInfo.setImgUrl("/upload/"+System.currentTimeMillis()+"_"+productInfo.getMultipartFile().getOriginalFilename());
         }
@@ -103,7 +108,7 @@ public class ProductService {
     }
     public List<ProductInfo> getAllProductInfo() {
         log.info("=====>Find All ProductInfo");
-        return productInfoDAO.findAll();
+        return productInfoDAO.findAll(productInfo);
     }
     public ProductInfo findByIdProductInfo(int id) {
         log.info("=====>Find ProductInfo by id: " + id);

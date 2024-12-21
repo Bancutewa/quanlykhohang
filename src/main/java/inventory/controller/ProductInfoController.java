@@ -47,7 +47,7 @@ public class ProductInfoController {
     }
     @RequestMapping(value = "/product-info/list")
     public String showproductInfoList(Model model, HttpSession session, @ModelAttribute("searchForm") ProductInfo productInfo) {
-        List<ProductInfo> categories = productService.getAllProductInfo(productInfo);
+        List<ProductInfo> categories = productService.getAllProductInfo();
         if(session.getAttribute(Constant.MSG_SUCCESS) != null) {
             model.addAttribute(Constant.MSG_SUCCESS, session.getAttribute(Constant.MSG_SUCCESS));
             session.removeAttribute(Constant.MSG_SUCCESS);

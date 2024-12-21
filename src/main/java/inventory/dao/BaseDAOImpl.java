@@ -1,5 +1,6 @@
 package inventory.dao;
 
+import inventory.model.Paging;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -21,20 +22,30 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
     final static Logger log = Logger.getLogger(BaseDAOImpl.class);
     @Autowired
     SessionFactory sessionFactory;
-    public List<E> findAll(String queryStr, Map<String, Object> mapParams)  {
+    public List<E> findAll(String queryStr, Map<String, Object> mapParams, Paging paging)  {
         log.info("find all records from db");
-        StringBuilder queryString = new StringBuilder();
+        StringBuilder queryString = new StringBuilder("");
+        StringBuilder countQuery = new StringBuilder();
+        countQuery.append(" select count(*) from ").append(getGenericName()).append(" as model where model.activeFlag=1");
         queryString.append(" from ").append(getGenericName()).append(" as model where model.activeFlag=1");
         if (queryStr!=null && !queryStr.isEmpty()) {
             queryString.append(queryStr);
+            countQuery.append(queryStr);
         }
         Query<E> query = sessionFactory.getCurrentSession().createQuery(queryString.toString());
+        Query<Long> countQ = sessionFactory.getCurrentSession().createQuery(countQuery.toString(), Long.class);
         if (mapParams != null && !mapParams.isEmpty()) {
             for(String key : mapParams.keySet()) {
                 query.setParameter(key, mapParams.get(key));
+                countQ.setParameter(key, mapParams.get(key));
             }
         }
-
+        if (paging != null) {
+            query.setFirstResult(paging.getOffset());
+            query.setMaxResults(paging.getRecordPerPage());
+            long totalRecords =(long)countQ.uniqueResult();
+            paging.setTotalRows(totalRecords);
+        }
         log.info("Query find all -->" + queryString.toString());
         return query.list();
     }
